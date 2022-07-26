@@ -19,7 +19,7 @@ app.use(require('body-parser').json());
 const limiter = rateLimit({
   windowMs : process.env.WINDOW_SIZE_IN_MINUTES*60*1000,//window size is 10 minutes
   max: process.env.MAX_REQUEST_PER_USER,//max request per user
-  message: 'You have exceeded the max number of request available. Please try sometime later'
+  message: `You have exceeded the max number of request available. Please try after ${process.env.WINDOW_SIZE_IN_MINUTES} later`
 });
 
 app.use(limiter);
@@ -29,5 +29,5 @@ app.set('trust proxy',1);//read in docs what is trust proxy great explanation th
 app.use('/api',require('./routes/index'));
 
 app.listen(PORT,() => {
-  console.log(`Server is running on ${PORT}`);
+  // console.log(`Server is running on ${PORT}`);
 });
