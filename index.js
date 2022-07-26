@@ -17,9 +17,9 @@ const app = express();
 app.use(cors());
 app.use(require('body-parser').json());
 const limiter = rateLimit({
-  windowMs : 10*60*1000,//window size is 10 minutes
-  max: 20,//max request 5 in 10 minutes
-  message: 'You have exceeded the max number of request available in 10 minutes. Please try again'
+  windowMs : process.env.WINDOW_SIZE_IN_MINUTES*60*1000,//window size is 10 minutes
+  max: process.env.MAX_REQUEST_PER_USER,//max request per user
+  message: 'You have exceeded the max number of request available. Please try sometime later'
 });
 
 app.use(limiter);
