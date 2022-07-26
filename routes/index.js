@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const needle = require('needle');
 router.get('/',(req,res) => {
-  res.send("Hello World");
+  res.send({status:"200"});
 });
 
 router.post('/',async (req,res)=>{
