@@ -15,8 +15,8 @@ const app = express();
 
 //middlewares
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 const limiter = rateLimit({
   windowMs : process.env.WINDOW_SIZE_IN_MINUTES*60*1000,//window size is 10 minutes
   max: process.env.MAX_REQUEST_PER_USER,//max request per user
