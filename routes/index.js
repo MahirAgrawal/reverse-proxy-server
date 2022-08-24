@@ -6,9 +6,12 @@ router.get('/',(req,res) => {
   res.send({status:"200"});
 });
 
-router.post('/',(req,res) => {
-  res.json({"status":"503","message":"Server in maintainance. Will be up by 25-08-2022"});
-});
+//to put server in maintainance mode with code change and by only env variables in heroku
+if(process.env.SERVER_IN_MAINTAINANCE){
+  router.post('/',(req,res) => {
+    res.json({"status":"503","message":`Server in maintainance. Will be up by ${process.env.SERVER_IN_MAINTAINANCE_UNTIL_TIME}`});
+  });
+}
 
 router.post('/',async (req,res)=>{
   const data = {
