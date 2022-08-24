@@ -6,9 +6,10 @@ router.get('/',(req,res) => {
   res.send({status:"200"});
 });
 
-router.post('/',(req,res => {
+router.post('/',(req,res) => {
   res.json({"status":"503","message":"Server in maintainance. Will be up by 25-08-2022"});
-}));
+});
+
 router.post('/',async (req,res)=>{
   const data = {
     "code":req.body.code,
