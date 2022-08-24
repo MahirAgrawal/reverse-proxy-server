@@ -18,7 +18,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const limiter = rateLimit({
-  windowMs : process.env.WINDOW_SIZE_IN_MINUTES*60*1000,//window size is 10 minutes
+  windowMs : process.env.WINDOW_SIZE_IN_MINUTES*60*1000,//window size
   max: process.env.MAX_REQUEST_PER_USER,//max request per user
   message: `You have exceeded the max number of request available. Please try after ${process.env.WINDOW_SIZE_IN_MINUTES} later`
 });

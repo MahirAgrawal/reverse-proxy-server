@@ -6,6 +6,9 @@ router.get('/',(req,res) => {
   res.send({status:"200"});
 });
 
+router.post('/',(req,res => {
+  res.json({"status":"503","message":"Server in maintainance. Will be up by 25-08-2022"});
+}));
 router.post('/',async (req,res)=>{
   const data = {
     "code":req.body.code,
@@ -16,7 +19,6 @@ router.post('/',async (req,res)=>{
     const result = await needle("post",process.env.API_BASE_URL,data);
     res.send(result.body);
   }catch(err){
-    // console.log(err);
     res.send({"status":500});
   }
 })
