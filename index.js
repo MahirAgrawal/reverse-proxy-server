@@ -26,6 +26,10 @@ const limiter = rateLimit({
 app.use(limiter);
 app.set('trust proxy',1);//read in docs what is trust proxy great explanation there
 
+app.get('/ping',(req,res)=>{
+  res.json({"status":200});
+})
+
 //routes
 app.use('/api',require('./routes/index'));
 
