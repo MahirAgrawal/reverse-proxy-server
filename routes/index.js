@@ -2,9 +2,6 @@ const { json } = require('body-parser');
 const express = require('express');
 const router = express.Router();
 const needle = require('needle');
-router.get('/',(req,res) => {
-  res.send({status:"200"});
-});
 
 //to put server in maintainance mode with code change and by only env variables in heroku
 if(process.env.SERVER_IN_MAINTAINANCE === "true"){
