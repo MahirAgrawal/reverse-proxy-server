@@ -26,6 +26,19 @@ const limiter = rateLimit({
 app.use(limiter);
 app.set('trust proxy',1);//read in docs what is trust proxy great explanation there
 
+//to put server in maintainance mode without code change and by only env variables in heroku
+if(process.env.SERVER_IN_MAINTAINANCE === "true"){
+  app.get('/*',(req,res) => {
+    res.statusMessage = `Server in maintainance. Will be up by ${process.env.SERVER_IN_MAINTAINANCE_UNTIL_TIME}`;
+    res.sendStatus(503);
+  });
+  app.post('/*',(req,res) => {
+    res.statusMessage = `Server in maintainance. Will be up by ${process.env.SERVER_IN_MAINTAINANCE_UNTIL_TIME}`;
+    res.sendStatus(503);
+  });
+
+}
+
 app.get('/ping',(req,res)=>{
   res.json({"status":200});
 })

@@ -3,13 +3,6 @@ const express = require('express');
 const router = express.Router();
 const needle = require('needle');
 
-//to put server in maintainance mode with code change and by only env variables in heroku
-if(process.env.SERVER_IN_MAINTAINANCE === "true"){
-  router.post('/',(req,res) => {
-    res.json({"status":"503","message":`Server in maintainance. Will be up by ${process.env.SERVER_IN_MAINTAINANCE_UNTIL_TIME}`});
-  });
-}
-
 router.post('/',async (req,res)=>{
   const data = {
     "code":req.body.code,
