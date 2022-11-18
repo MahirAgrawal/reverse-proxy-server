@@ -2,6 +2,7 @@ const express = require('express');//express module -> lightweight framework for
 const cors = require('cors');//cors module -> helps to enable cors request
 const bodyParser = require('body-parser');//body-parser for parsing the request object to get params
 const rateLimit = require('express-rate-limit');
+const logger = require('./logger/logger');
 
 //needle module -> for making http request to base url(used in routes/index.js)
 
@@ -17,6 +18,8 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(logger);
+
 const limiter = rateLimit({
   windowMs : process.env.WINDOW_SIZE_IN_MINUTES*60*1000,//window size
   max: process.env.MAX_REQUEST_PER_USER,//max request per user
