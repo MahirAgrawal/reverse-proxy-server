@@ -2,7 +2,6 @@ const express = require('express');//express module -> lightweight framework for
 const cors = require('cors');//cors module -> helps to enable cors request
 const bodyParser = require('body-parser');//body-parser for parsing the request object to get params
 const rateLimit = require('express-rate-limit');
-const logger = require('./logger/logger');
 
 //needle module -> for making http request to base url(used in routes/index.js)
 
