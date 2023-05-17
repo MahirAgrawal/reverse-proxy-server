@@ -16,6 +16,7 @@ router.post('/',async (req,res)=>{
     const result = await needle("post",process.env.API_BASE_URL,data);
     res.send(result.body);
   }catch(err){
+    console.error(err);
     res.sendStatus(500).end();
   }
 })
