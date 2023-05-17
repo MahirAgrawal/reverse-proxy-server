@@ -18,7 +18,6 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(logger);
 
 const limiter = rateLimit({
   windowMs : process.env.WINDOW_SIZE_IN_MINUTES*60*1000,//window size
