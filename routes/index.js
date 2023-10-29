@@ -12,6 +12,7 @@ router.post('/',async (req,res)=>{
   if(!data.stdin){
     data.stdin = " ";
   }
+  console.log(process.env.API_BASE_URL);
   try{
     const result = await needle("post",process.env.API_BASE_URL,data);
     res.send(result.body);
