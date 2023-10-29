@@ -52,3 +52,5 @@ app.use('/api',require('./routes/index'));
 app.listen(PORT,() => {
   // console.log(`Server is running on ${PORT}`);
 });
+
+export default app;
